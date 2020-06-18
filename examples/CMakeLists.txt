@@ -113,6 +113,21 @@ if (ENABLE_CUDA)
     PROPERTIES CUDA_SEPARABLE_COMPILATION On)
 
   list(APPEND umpire_examples multi_device)
+
+  blt_add_executable(
+    NAME register_external_pointer
+    SOURCES register_external_pointer.cpp
+    DEPENDS_ON umpire cuda)
+
+  set_source_files_properties(
+    register_external_pointer.cpp
+    PROPERTIES CUDA_SEPARABLE_COMPILATION On)
+
+  set_target_properties(
+    register_external_pointer
+    PROPERTIES CUDA_SEPARABLE_COMPILATION On)
+
+  list(APPEND umpire_examples register_external_pointer)
 endif()
 
 install(TARGETS ${umpire_examples} RUNTIME DESTINATION bin)
